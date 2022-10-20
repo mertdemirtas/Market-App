@@ -11,5 +11,6 @@ import UIKit
 class MainPageViewController: BaseViewController<MainPageViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getData()
     }
 }

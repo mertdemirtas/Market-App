@@ -30,6 +30,9 @@
 		406168992901748400856621 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168982901748400856621 /* MainPageViewController.swift */; };
 		4061689B2901748D00856621 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4061689A2901748D00856621 /* MainPageViewModel.swift */; };
 		4061689D2901749500856621 /* MainPageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4061689C2901749500856621 /* MainPageBuilder.swift */; };
+		406168A329017A4F00856621 /* MockDataEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A229017A4F00856621 /* MockDataEndpoint.swift */; };
+		406168A6290188F900856621 /* MockDataNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A5290188F900856621 /* MockDataNetworkConstants.swift */; };
+		406168A8290189B500856621 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A7290189B500856621 /* MockDataModel.swift */; };
 		6E1341B4280605060092B126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1341B3280605060092B126 /* AppDelegate.swift */; };
 		6E1341BD280605070092B126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BC280605070092B126 /* Assets.xcassets */; };
 		6E1341C0280605070092B126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BE280605070092B126 /* LaunchScreen.storyboard */; };
@@ -78,6 +81,9 @@
 		406168982901748400856621 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		4061689A2901748D00856621 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
 		4061689C2901749500856621 /* MainPageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageBuilder.swift; sourceTree = "<group>"; };
+		406168A229017A4F00856621 /* MockDataEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataEndpoint.swift; sourceTree = "<group>"; };
+		406168A5290188F900856621 /* MockDataNetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataNetworkConstants.swift; sourceTree = "<group>"; };
+		406168A7290189B500856621 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
 		6E1341B0280605060092B126 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1341B3280605060092B126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E1341BC280605070092B126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -205,6 +211,40 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4061689F29017A2C00856621 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				406168A4290188E500856621 /* Mock Data */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		406168A029017A3200856621 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				406168A229017A4F00856621 /* MockDataEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		406168A129017A3900856621 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				406168A7290189B500856621 /* MockDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		406168A4290188E500856621 /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				406168A029017A3200856621 /* Endpoints */,
+				406168A129017A3900856621 /* Models */,
+				406168A5290188F900856621 /* MockDataNetworkConstants.swift */,
+			);
+			path = "Mock Data";
+			sourceTree = "<group>";
+		};
 		6E1341A7280605060092B126 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +268,7 @@
 		6E1341B2280605060092B126 /* ShoppingApp */ = {
 			isa = PBXGroup;
 			children = (
+				4061689F29017A2C00856621 /* Network */,
 				4061689E2901751B00856621 /* Components */,
 				4061686C29016EED00856621 /* Extensions */,
 				4061686B29016EE400856621 /* Support Files */,
@@ -400,6 +441,7 @@
 				406168992901748400856621 /* MainPageViewController.swift in Sources */,
 				4061688829016F8000856621 /* BaseLabel.swift in Sources */,
 				4061688A29016F8000856621 /* BaseSearchController.swift in Sources */,
+				406168A329017A4F00856621 /* MockDataEndpoint.swift in Sources */,
 				4061688F29016FB100856621 /* UIColor+Extension.swift in Sources */,
 				4061689D2901749500856621 /* MainPageBuilder.swift in Sources */,
 				4061687E29016F8000856621 /* GenericTableViewCell.swift in Sources */,
@@ -407,6 +449,8 @@
 				4061688B29016F8000856621 /* BaseCollectionView.swift in Sources */,
 				4061688029016F8000856621 /* AlertViewControllerContainerView.swift in Sources */,
 				4061688E29016FB100856621 /* UIView+Extension.swift in Sources */,
+				406168A6290188F900856621 /* MockDataNetworkConstants.swift in Sources */,
+				406168A8290189B500856621 /* MockDataModel.swift in Sources */,
 				4061688429016F8000856621 /* BaseButton.swift in Sources */,
 				4061688729016F8000856621 /* BaseCollectionViewCell.swift in Sources */,
 				4061688629016F8000856621 /* GenericBaseView.swift in Sources */,
