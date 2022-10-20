@@ -13,7 +13,14 @@ class ShoppingCardButton: BaseButton<ShoppingCardButtonData> {
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
         temp.axis = .horizontal
-        temp.distribution = .fillEqually
+        temp.distribution = .fill
+        temp.spacing = 3.0
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        return temp
+    }()
+    
+    private lazy var BasketImageView: BaseView = {
+        let temp = BaseView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
@@ -28,7 +35,6 @@ class ShoppingCardButton: BaseButton<ShoppingCardButtonData> {
     
     private lazy var basketAmountLabel: BaseLabel = {
         let temp = BaseLabel()
-        temp.backgroundColor = .lightGray
         temp.textColor = .black
         temp.font = .boldSystemFont(ofSize: 17)
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -46,17 +52,21 @@ class ShoppingCardButton: BaseButton<ShoppingCardButtonData> {
     }
     
     override func addMajorViewComponents() {
-        addSubview(containerStackView)
+        backgroundColor = .white
+        layer.cornerRadius = 5.0
         
+        addSubview(containerStackView)
+
         containerStackView.addArrangedSubview(basketImage)
+        containerStackView.addArrangedSubview(basketAmountLabel)
         
         NSLayoutConstraint.activate([
-            containerStackView.topAnchor.constraint(equalTo: topAnchor),
-            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: 3.0),
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 3.0),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3.0),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3.0),
             
-            basketImage.heightAnchor.constraint(equalToConstant: 20.0),
+            basketImage.heightAnchor.constraint(equalToConstant: 25.0),
             basketImage.widthAnchor.constraint(equalToConstant: 40.0)
         ])
     }
@@ -65,7 +75,6 @@ class ShoppingCardButton: BaseButton<ShoppingCardButtonData> {
         guard let data = returnData() else { return }
         guard let basketAmount = data.basketAmount else { return }
         
-        containerStackView.addArrangedSubview(basketAmountLabel)
         basketAmountLabel.text = "\(basketAmount)"
     }
 }

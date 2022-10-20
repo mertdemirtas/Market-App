@@ -16,7 +16,7 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
     // MARK: UIComponents
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
-        temp.distribution = .fillProportionally
+        temp.distribution = .fill
         temp.axis = .horizontal
         temp.spacing = spacingValue
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -27,15 +27,16 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
         let temp = UIStackView()
         temp.axis = .vertical
         temp.spacing = spacingValue
-        temp.distribution = .fill
+        temp.distribution = .fillProportionally
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
     private lazy var productName: BaseLabel = {
         let temp = BaseLabel()
-        temp.numberOfLines = 0
-        temp.font = .systemFont(ofSize: 19)
+        temp.numberOfLines = 2
+        temp.font = .systemFont(ofSize: 16)
+        temp.contentMode = .topLeft
         temp.textColor = .black
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
@@ -43,24 +44,29 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
     
     private lazy var productDescription: BaseLabel = {
         let temp = BaseLabel()
-        temp.numberOfLines = 0
-        temp.font = .systemFont(ofSize: 17)
+        temp.numberOfLines = 2
+        temp.font = .systemFont(ofSize: 14)
+        temp.contentMode = .top
         temp.textColor = .darkGray
+        temp.sizeToFit()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
     private lazy var productPrice: BaseLabel = {
         let temp = BaseLabel()
-        temp.font = .systemFont(ofSize: 19)
+        temp.numberOfLines = 1
+        temp.font = .systemFont(ofSize: 16)
         temp.textColor = .systemIndigo
+        temp.contentMode = .bottom
+        temp.sizeToFit()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
     private lazy var productImage: UIImageView = {
         let temp = UIImageView()
-        temp.contentMode = .scaleAspectFit
+        temp.contentMode = .scaleToFill
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
@@ -82,7 +88,8 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            productImage.widthAnchor.constraint(equalToConstant: 120.0)
+            productImage.widthAnchor.constraint(equalToConstant: 100.0),
+            productImage.heightAnchor.constraint(equalToConstant: 100.0)
         ])
     }
     
@@ -90,19 +97,22 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
         guard let data = returnData() else { return }
         productName.text = data.productName
         productDescription.text = data.productDescription
-        productPrice.text = String(describing: data.productPrice)
         
-//        guard let imageURL = URL(string: data.productImage ?? "") else { return }
-//
-//            // just not to cause a deadlock in UI!
-//        DispatchQueue.global().async {
-//            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-//
-//            let image = UIImage(data: imageData)
-//            DispatchQueue.main.async {
-//                self.productImage.image = image
-//                self.reloadViewClosure?()
-//            }
-//        }
+        if let productPriceString = data.productPrice {
+            productPrice.text = "\(productPriceString)"
+        }
+        
+        guard let imageURL = URL(string: "https://raw.githubusercontent.com/android-getir/public-files/main/images/5f36a28b29d3b131b9d95548_tr_1637858193743.jpeg") else { return }
+
+            // just not to cause a deadlock in UI!
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.productImage.image = image
+          //      self.reloadViewClosure?()
+            }
+        }
     }
 }
