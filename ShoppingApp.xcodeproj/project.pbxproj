@@ -33,6 +33,12 @@
 		406168A329017A4F00856621 /* MockDataEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A229017A4F00856621 /* MockDataEndpoint.swift */; };
 		406168A6290188F900856621 /* MockDataNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A5290188F900856621 /* MockDataNetworkConstants.swift */; };
 		406168A8290189B500856621 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168A7290189B500856621 /* MockDataModel.swift */; };
+		406168AB2901ADA000856621 /* ProductTableViewCellCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168AA2901ADA000856621 /* ProductTableViewCellCardView.swift */; };
+		406168AE2901AE8A00856621 /* ShoppingCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168AD2901AE8A00856621 /* ShoppingCardButton.swift */; };
+		406168B02901AEC900856621 /* ShoppingCardButtonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168AF2901AEC900856621 /* ShoppingCardButtonData.swift */; };
+		406168B42901C22500856621 /* ProductTableViewCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168B32901C22400856621 /* ProductTableViewCellData.swift */; };
+		406168B62901DB7600856621 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168B52901DB7500856621 /* ProductTableViewCell.swift */; };
+		406168B82901E07800856621 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406168B72901E07800856621 /* UIImageView+Extension.swift */; };
 		6E1341B4280605060092B126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1341B3280605060092B126 /* AppDelegate.swift */; };
 		6E1341BD280605070092B126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BC280605070092B126 /* Assets.xcassets */; };
 		6E1341C0280605070092B126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BE280605070092B126 /* LaunchScreen.storyboard */; };
@@ -84,6 +90,12 @@
 		406168A229017A4F00856621 /* MockDataEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataEndpoint.swift; sourceTree = "<group>"; };
 		406168A5290188F900856621 /* MockDataNetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataNetworkConstants.swift; sourceTree = "<group>"; };
 		406168A7290189B500856621 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
+		406168AA2901ADA000856621 /* ProductTableViewCellCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCellCardView.swift; sourceTree = "<group>"; };
+		406168AD2901AE8A00856621 /* ShoppingCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCardButton.swift; sourceTree = "<group>"; };
+		406168AF2901AEC900856621 /* ShoppingCardButtonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCardButtonData.swift; sourceTree = "<group>"; };
+		406168B32901C22400856621 /* ProductTableViewCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCellData.swift; sourceTree = "<group>"; };
+		406168B52901DB7500856621 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		406168B72901E07800856621 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		6E1341B0280605060092B126 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1341B3280605060092B126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E1341BC280605070092B126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +191,7 @@
 			children = (
 				4061688D29016FB100856621 /* UIColor+Extension.swift */,
 				4061688C29016FB100856621 /* UIView+Extension.swift */,
+				406168B72901E07800856621 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +219,8 @@
 		4061689E2901751B00856621 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				406168AC2901AE5D00856621 /* Shopping Card Button */,
+				406168A92901AD6B00856621 /* Product Table View Cell */,
 				4061686F29016F8000856621 /* Two Button Alert Controller */,
 			);
 			path = Components;
@@ -245,6 +260,25 @@
 			path = "Mock Data";
 			sourceTree = "<group>";
 		};
+		406168A92901AD6B00856621 /* Product Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				406168AA2901ADA000856621 /* ProductTableViewCellCardView.swift */,
+				406168B32901C22400856621 /* ProductTableViewCellData.swift */,
+				406168B52901DB7500856621 /* ProductTableViewCell.swift */,
+			);
+			path = "Product Table View Cell";
+			sourceTree = "<group>";
+		};
+		406168AC2901AE5D00856621 /* Shopping Card Button */ = {
+			isa = PBXGroup;
+			children = (
+				406168AD2901AE8A00856621 /* ShoppingCardButton.swift */,
+				406168AF2901AEC900856621 /* ShoppingCardButtonData.swift */,
+			);
+			path = "Shopping Card Button";
+			sourceTree = "<group>";
+		};
 		6E1341A7280605060092B126 = {
 			isa = PBXGroup;
 			children = (
@@ -268,14 +302,14 @@
 		6E1341B2280605060092B126 /* ShoppingApp */ = {
 			isa = PBXGroup;
 			children = (
-				4061689F29017A2C00856621 /* Network */,
-				4061689E2901751B00856621 /* Components */,
-				4061686C29016EED00856621 /* Extensions */,
-				4061686B29016EE400856621 /* Support Files */,
-				4061686A29016EDC00856621 /* Base Components */,
-				4061686929016ED600856621 /* Screens */,
 				4061686729016EC300856621 /* App Files */,
 				4061686829016ECC00856621 /* Assets */,
+				4061686B29016EE400856621 /* Support Files */,
+				4061686A29016EDC00856621 /* Base Components */,
+				4061689E2901751B00856621 /* Components */,
+				4061689F29017A2C00856621 /* Network */,
+				4061686929016ED600856621 /* Screens */,
+				4061686C29016EED00856621 /* Extensions */,
 				6E1341BE280605070092B126 /* LaunchScreen.storyboard */,
 				6E1341C1280605070092B126 /* Info.plist */,
 			);
@@ -436,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4061688329016F8000856621 /* BaseTableViewCell.swift in Sources */,
+				406168AB2901ADA000856621 /* ProductTableViewCellCardView.swift in Sources */,
 				4061689B2901748D00856621 /* MainPageViewModel.swift in Sources */,
 				4061689329016FBB00856621 /* GenericDataProtocol.swift in Sources */,
 				406168992901748400856621 /* MainPageViewController.swift in Sources */,
@@ -443,19 +478,24 @@
 				4061688A29016F8000856621 /* BaseSearchController.swift in Sources */,
 				406168A329017A4F00856621 /* MockDataEndpoint.swift in Sources */,
 				4061688F29016FB100856621 /* UIColor+Extension.swift in Sources */,
+				406168AE2901AE8A00856621 /* ShoppingCardButton.swift in Sources */,
 				4061689D2901749500856621 /* MainPageBuilder.swift in Sources */,
 				4061687E29016F8000856621 /* GenericTableViewCell.swift in Sources */,
 				4061687F29016F8000856621 /* TwoButtonAlertViewController.swift in Sources */,
 				4061688B29016F8000856621 /* BaseCollectionView.swift in Sources */,
 				4061688029016F8000856621 /* AlertViewControllerContainerView.swift in Sources */,
+				406168B62901DB7600856621 /* ProductTableViewCell.swift in Sources */,
 				4061688E29016FB100856621 /* UIView+Extension.swift in Sources */,
 				406168A6290188F900856621 /* MockDataNetworkConstants.swift in Sources */,
 				406168A8290189B500856621 /* MockDataModel.swift in Sources */,
 				4061688429016F8000856621 /* BaseButton.swift in Sources */,
 				4061688729016F8000856621 /* BaseCollectionViewCell.swift in Sources */,
 				4061688629016F8000856621 /* GenericBaseView.swift in Sources */,
+				406168B42901C22500856621 /* ProductTableViewCellData.swift in Sources */,
 				4061688929016F8000856621 /* BaseTableView.swift in Sources */,
+				406168B02901AEC900856621 /* ShoppingCardButtonData.swift in Sources */,
 				4061688529016F8000856621 /* BaseViewController.swift in Sources */,
+				406168B82901E07800856621 /* UIImageView+Extension.swift in Sources */,
 				4061689229016FBB00856621 /* BaseViewModel.swift in Sources */,
 				4061688129016F8000856621 /* AlertViewData.swift in Sources */,
 				4061688229016F8000856621 /* BaseView.swift in Sources */,

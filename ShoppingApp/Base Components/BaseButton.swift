@@ -28,7 +28,7 @@ class BaseButton<T>: GenericBaseView<T>, UIGestureRecognizerDelegate {
         addGestureRecognizer(tap)
     }
     
-    @objc fileprivate func buttonTapped(_ sender: UITapGestureRecognizer) {
+    @objc func buttonTapped(_ sender: UITapGestureRecognizer) {
         isUserInteractionEnabled = false
         startTappedAnimation { finish in
             if finish {
