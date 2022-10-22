@@ -14,7 +14,7 @@ protocol BaseViewModelNetworkStateDelegate: AnyObject {
 
 class BaseViewModel {
     public let networkManager = NetworkManager.shared
-    private weak var networkStateDelegate: BaseViewModelNetworkStateDelegate?
+    weak var networkStateDelegate: BaseViewModelNetworkStateDelegate?
     
     init() {
         networkState()

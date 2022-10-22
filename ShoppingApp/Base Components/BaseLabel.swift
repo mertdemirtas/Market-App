@@ -19,6 +19,6 @@ class BaseLabel: UILabel {
     
     public func addText(text: String?) {
         guard let text = text else { return }
-        self.text = (self.text ?? "") + " " + text
+        self.text = (self.text ?? "") + text
     }
 }

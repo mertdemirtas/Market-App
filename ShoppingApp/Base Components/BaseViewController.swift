@@ -14,21 +14,22 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     let nav = UINavigationBarAppearance()
     
     // MARK: - ActivityIndicator
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        let temp = UIActivityIndicatorView()
-        temp.style = .large
+    private lazy var loadingViewComponent: LoadingViewComponent = {
+        let frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        let temp = LoadingViewComponent(frame: frame)
         temp.color = .spinnerColor
+        temp.style = .large
         temp.backgroundColor = .clear
-        temp.translatesAutoresizingMaskIntoConstraints = false
         guard let applicationWindowCenter = self.view.window?.center else { return temp }
-        temp.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         temp.center = applicationWindowCenter
+        temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
     convenience init(viewModel: T) {
         self.init()
         self.viewModel = viewModel
+        viewModel.networkStateDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,16 +69,16 @@ extension BaseViewController: BaseViewModelNetworkStateDelegate {
         switch(networkState) {
         case .processing:
             DispatchQueue.main.async {
-                self.view.window?.addSubview(self.activityIndicator)
+                self.view.window?.addSubview(self.loadingViewComponent)
+                self.loadingViewComponent.startLoading()
             }
         case .done:
             DispatchQueue.main.async {
-                self.activityIndicator.removeFromSuperview()
-                self.activityIndicator.stopAnimating()
+                self.loadingViewComponent.stopLoading()
             }
         case .error(_):
             DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
+                self.loadingViewComponent.stopLoading()
             }
         }
     }
