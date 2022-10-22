@@ -10,62 +10,29 @@ import UIKit
 
 class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
     // MARK: Constants
-    private let spacingValue: CGFloat = 8.0
+    private let spacingValue: CGFloat = 4.0
     var reloadViewClosure: (() -> Void)?
     
     // MARK: UIComponents
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
-        temp.distribution = .fill
         temp.axis = .horizontal
+        temp.distribution = .fill
         temp.spacing = spacingValue
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
-    private lazy var productDetailStackView: UIStackView = {
-        let temp = UIStackView()
-        temp.axis = .vertical
-        temp.spacing = spacingValue
-        temp.distribution = .fillProportionally
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        return temp
-    }()
-    
-    private lazy var productName: BaseLabel = {
-        let temp = BaseLabel()
-        temp.numberOfLines = 2
-        temp.font = .systemFont(ofSize: 16)
-        temp.contentMode = .topLeft
-        temp.textColor = .black
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        return temp
-    }()
-    
-    private lazy var productDescription: BaseLabel = {
-        let temp = BaseLabel()
-        temp.numberOfLines = 2
-        temp.font = .systemFont(ofSize: 14)
-        temp.contentMode = .top
-        temp.textColor = .darkGray
-        temp.sizeToFit()
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        return temp
-    }()
-    
-    private lazy var productPrice: BaseLabel = {
-        let temp = BaseLabel()
-        temp.numberOfLines = 1
-        temp.font = .systemFont(ofSize: 16)
-        temp.textColor = .systemIndigo
-        temp.contentMode = .bottom
-        temp.sizeToFit()
+    private lazy var productInfoCardView: ProductInfoCardView = {
+        let temp = ProductInfoCardView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
     private lazy var productImage: UIImageView = {
         let temp = UIImageView()
+        temp.layer.masksToBounds = true
+        temp.layer.cornerRadius = 10.0
         temp.contentMode = .scaleToFill
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
@@ -75,12 +42,8 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
     override func addMajorViewComponents() {
         addSubview(containerStackView)
         
-        containerStackView.addArrangedSubview(productDetailStackView)
+        containerStackView.addArrangedSubview(productInfoCardView)
         containerStackView.addArrangedSubview(productImage)
-        
-        productDetailStackView.addArrangedSubview(productName)
-        productDetailStackView.addArrangedSubview(productDescription)
-        productDetailStackView.addArrangedSubview(productPrice)
 
         NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(equalTo: topAnchor),
@@ -89,22 +52,16 @@ class ProductTableViewCellCardView: BaseButton<ProductTableViewCellData> {
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             productImage.widthAnchor.constraint(equalToConstant: 100.0),
-            productImage.heightAnchor.constraint(equalToConstant: 100.0)
+            containerStackView.heightAnchor.constraint(equalToConstant: 120.0)
         ])
     }
     
     override func loadDataView() {
         guard let data = returnData() else { return }
-        productName.text = data.productName
-        productDescription.text = data.productDescription
-        
-        if let productPriceString = data.productPrice {
-            productPrice.text = "\(productPriceString)"
-        }
+        productInfoCardView.setData(by: ProductInfoCardViewData(productName: data.productName, productDescription: data.productDescription, productPrice: data.productPrice))
         
         guard let imageURL = URL(string: "https://raw.githubusercontent.com/android-getir/public-files/main/images/5f36a28b29d3b131b9d95548_tr_1637858193743.jpeg") else { return }
 
-            // just not to cause a deadlock in UI!
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
 
