@@ -75,6 +75,11 @@ extension MainPageViewController: UITableViewDataSource {
                 self?.tableView.reloadInputViews()
             }
         }
+        cell.genericView.setButtonAction { [weak self] in
+            let vc = ProductDetailPageBuilder.build(productDetail: ProductDetailCardViewData(productInfoData: ProductInfoCardViewData(productName: data.productName, productDescription: data.productDescription, productPrice: data.productPrice), productImage: data.productImage))
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         return cell
     }
 }
+
