@@ -68,7 +68,6 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
     
     private lazy var productAmount: BaseLabel = {
         let temp = BaseLabel()
-        temp.text = "₺124.99"
         temp.textAlignment = .center
         temp.textColor = .systemIndigo
         temp.font = .boldSystemFont(ofSize: 18)
@@ -97,11 +96,27 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
         ])
     }
     
+    override func setupViewConfigurations() {
+        removeFromBasketButton.setButtonAction {
+            
+        }
+        
+        addToBasketButton.setButtonAction {
+            
+        }
+    }
+    
     override func loadDataView() {
         guard let data = returnData() else { return }
         
         if let productCountData = data.productCount {
             productCount.text = "\(productCountData)"
+            
+            guard let productPrice = data.productPrice else { return }
+            productAmount.text = "₺\(productPrice * Double(productCountData))"
+        }
+        else {
+            productCount.text = "0"
         }
     }
 }

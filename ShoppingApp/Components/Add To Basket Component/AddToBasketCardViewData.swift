@@ -9,4 +9,5 @@ import Foundation
 
 struct AddToBasketCardViewData {
     let productCount: Int?
+    let productPrice: Double?
 }

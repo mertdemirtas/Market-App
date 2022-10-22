@@ -55,5 +55,6 @@ class ProductDetailPageViewController: BaseViewController<ProductDetailPageViewM
     private func bindData() {
         let data = viewModel.getData()
         productDetailCardView.setData(by: data)
+        addToBasketCardView.setData(by: AddToBasketCardViewData(productCount: 1, productPrice: data?.productInfoData?.productPrice))
     }
 }
