@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-class ProductTableViewCell: GenericTableViewCell<ProductTableViewCellData, ProductTableViewCellCardView> {
+class ProductTableViewCell: GenericTableViewCell<ProductTableViewCellData, ProductTableViewCellCardButton> {
     
 }

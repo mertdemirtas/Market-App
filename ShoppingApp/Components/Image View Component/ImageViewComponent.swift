@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class ImageViewComponent: UIImageView {
+    private let imageCache = NSCache<NSString, UIImage>()
+    
     private var componentType: ImageViewComponentEnum?
     
     private lazy var loadingViewComponent: LoadingViewComponent = {
@@ -20,7 +22,6 @@ class ImageViewComponent: UIImageView {
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
-    
     
     func setImage(componentType: ImageViewComponentEnum?) {
         self.componentType = componentType
@@ -48,14 +49,23 @@ class ImageViewComponent: UIImageView {
         
         guard let imageURLString = imageURLString else { return }
         guard let imageURL = URL(string: imageURLString) else { return }
-
+        
+        if let cacheImage = ImageCacheManager.returnImagesFromCache(key: imageURLString) {
+            print(cacheImage)
+            self.image = cacheImage
+            self.loadingViewComponent.stopLoading()
+            return
+        }
+        
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
-
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                self.image = image
-                self.loadingViewComponent.stopLoading()
+            
+            if let tempImage = UIImage(data: imageData) {
+                DispatchQueue.main.async {
+                    self.image = tempImage
+                    ImageCacheManager.setImagesToCache(object: tempImage, key: imageURLString)
+                    self.loadingViewComponent.stopLoading()
+                }
             }
         }
     }

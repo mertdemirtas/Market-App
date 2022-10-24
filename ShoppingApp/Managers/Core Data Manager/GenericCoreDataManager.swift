@@ -83,7 +83,7 @@ class GenericCoreDataManager {
     // MARK: Core Data Manager Functions
     
     // Getting Entity Data
-    public func getEntityData(with entityName: String, completion: @escaping (Result<CoreDataResult, CoreDataErrors>) -> Void) {
+    private func getEntityData(with entityName: String, completion: @escaping (Result<CoreDataResult, CoreDataErrors>) -> Void) {
         let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
         request.returnsObjectsAsFaults = false
         
@@ -99,7 +99,7 @@ class GenericCoreDataManager {
     }
     
     // Creating Object
-    public func createObject(with entityManager: EntityWorker, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
+    private func createObject(with entityManager: EntityWorker, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
         guard let managedContext = managedContext else { return }
         guard let data = entityManager.entityObject?.entityObject else { return }
         
@@ -121,7 +121,7 @@ class GenericCoreDataManager {
     }
     
     // Updating Object
-    public func updateEntityObject<T>(with entityManager: EntityWorker, uniqueElementKey: String, uniqueElementValue: T, completion: @escaping (Result<CoreDataResult, CoreDataErrors>) -> Void) {
+    private func updateEntityObject<T: Equatable>(with entityManager: EntityWorker, uniqueElementKey: String, uniqueElementValue: T, completion: @escaping (Result<CoreDataResult, CoreDataErrors>) -> Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityManager.entityName)
         
         do {
@@ -129,7 +129,8 @@ class GenericCoreDataManager {
             guard let replacingObject = entityManager.entityObject?.entityObject else { return }
             
             for element in results {
-                if(element.value(forKey: uniqueElementKey) as? T.Type == uniqueElementValue as? T.Type) {
+                
+                if((element.value(forKey: uniqueElementKey) as! T) == uniqueElementValue) {
                     replacingObject.forEach({
                         element.setValue($0.value, forKey: $0.key)
                     })
@@ -149,14 +150,14 @@ class GenericCoreDataManager {
     }
     
     // Deleting Single Object
-    public func deleteData<T>(with entityManager: EntityWorker, uniqueElementValue: T, uniqueElementKey: String, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
+    private func deleteData<T: Equatable>(with entityManager: EntityWorker, uniqueElementValue: T, uniqueElementKey: String, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityManager.entityName)
         
         do {
             guard let results = try managedContext?.fetch(request) as? [NSManagedObject] else { return }
             
             for element in results {
-                if(element.value(forKey: uniqueElementKey) as? T.Type == uniqueElementValue as? Any.Type) {
+                if(element.value(forKey: uniqueElementKey) as! T == uniqueElementValue) {
                     managedContext?.delete(element)
                 }
             }
@@ -172,7 +173,7 @@ class GenericCoreDataManager {
         }
     }
     
-    public func deleteAllData(with entityManager: EntityWorker, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
+    private func deleteAllData(with entityManager: EntityWorker, completion: (Result<CoreDataResult, CoreDataErrors>) -> Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityManager.entityName)
         
         do {
@@ -194,7 +195,7 @@ class GenericCoreDataManager {
     }
     
     // Saving
-    func saveContext() throws {
+    private func saveContext() throws {
         do {
             try managedContext?.save()
         } catch let error{

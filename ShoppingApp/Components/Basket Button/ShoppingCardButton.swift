@@ -75,6 +75,6 @@ class ShoppingCardButton: BaseButton<ShoppingCardButtonData> {
         guard let data = returnData() else { return }
         guard let basketAmount = data.basketAmount else { return }
         
-        basketAmountLabel.text = "\(basketAmount)"
+        basketAmountLabel.text = "₺\(basketAmount)"
     }
 }

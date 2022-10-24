@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AddToBasketCardViewData {
+struct AddToBasketCardViewData: Codable {
     let productCount: Int?
     let productPrice: Double?
 }

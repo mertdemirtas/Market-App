@@ -122,7 +122,7 @@ class ProductDetailPageViewModel: BaseViewModel {
     private func updateData() {
         if let formattedData = DetailPageFormatter.formatDataToProductCoreDataModel(data: detailPageData) {
             let entityObject = EntityObject(entityObject: formattedData)
-            let worker = EntityWorker(entityName: "Product", entityOperation: .updateObject(uniqueElementKey: "productName", uniqueElementValue: formattedData.productName as Any), entityObject: entityObject)
+            let worker = EntityWorker(entityName: "Product", entityOperation: .updateObject(uniqueElementKey: "productName", uniqueElementValue: formattedData.productName ?? ""), entityObject: entityObject)
             
             coreDataManager.manageEntity(with: worker, completion: { (result: Result<CoreDataResult, CoreDataErrors>) in
                 switch(result) {
@@ -138,7 +138,7 @@ class ProductDetailPageViewModel: BaseViewModel {
     private func deleteData() {
         if let formattedData = DetailPageFormatter.formatDataToProductCoreDataModel(data: detailPageData) {
             let entityObject = EntityObject(entityObject: formattedData)
-            let worker = EntityWorker(entityName: "Product", entityOperation: .deleteObject(uniqueElementValue: formattedData.productName as Any, elementKey: "productName"), entityObject: entityObject)
+            let worker = EntityWorker(entityName: "Product", entityOperation: .deleteObject(uniqueElementValue: formattedData.productName ?? "", elementKey: "productName"), entityObject: entityObject)
             
             coreDataManager.manageEntity(with: worker, completion: { (result: Result<CoreDataResult, CoreDataErrors>) in
                 switch(result) {

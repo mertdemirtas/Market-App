@@ -11,5 +11,5 @@ struct MockDataModel: Codable {
     let productName: String?
     let productDescription: String?
     let productPrice: Double?
-    let productImage: String?
+    var productImage: String?
 }

@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct ProductTableViewCellData {
+struct ProductTableViewCellData: Codable {
+    let productInfoData: ProductInfoCardViewData?
     let productImage: String?
-    let productName: String?
-    let productPrice: Double?
-    let productDescription: String?
 }

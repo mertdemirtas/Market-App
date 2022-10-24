@@ -10,7 +10,7 @@ import Foundation
 enum EntityOperations {
     case getObjects
     case addObject
-    case updateObject(uniqueElementKey: String, uniqueElementValue: Any)
-    case deleteObject(uniqueElementValue: Any, elementKey: String)
+    case updateObject(uniqueElementKey: String, uniqueElementValue: String)
+    case deleteObject(uniqueElementValue: String, elementKey: String)
     case deleteAllObjects
 }

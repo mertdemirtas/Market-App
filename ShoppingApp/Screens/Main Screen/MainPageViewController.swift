@@ -12,7 +12,6 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
         
     private lazy var buttonCard: ShoppingCardButton = {
         let temp = ShoppingCardButton()
-        temp.setData(by: ShoppingCardButtonData(basketAmount: 20.0))
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
@@ -24,11 +23,21 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
         return temp
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        bindBasketButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
+        
         prepareNavigationBarItems()
-        viewModel.getData()
         prepareTableView()
+        
+        viewModel.getData()
+        
+        bindData()
     }
     
     private func prepareNavigationBarItems() {
@@ -38,6 +47,9 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
     
     private func prepareTableView() {
         tableView.registerCell(cells: [ProductTableViewCell.self])
+    }
+    
+    private func bindData() {
         bindTableView()
     }
     
@@ -47,6 +59,10 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    private func bindBasketButton() {
+        viewModel.getBasketAmount()
     }
     
     override func addViewComponents() {
@@ -69,17 +85,23 @@ extension MainPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else { return UITableViewCell() }
         let data = viewModel.getCellData(for: indexPath)
-        cell.setData(data: ProductTableViewCellData(productImage: data.productImage, productName: data.productName, productPrice: data.productPrice, productDescription: data.productDescription))
-        cell.genericView.reloadViewClosure = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadInputViews()
+        
+        if let formattedData = MainPageDataFormatter.formatDataToProductTableViewCellData(data: data) {
+            cell.setData(data: formattedData)
+            
+            cell.genericView.setButtonAction { [weak self] in
+                let vc = ProductDetailPageBuilder.build(productDetail: ProductDetailCardViewData(productInfoData: ProductInfoCardViewData(productName: data.productName, productDescription: data.productDescription, productPrice: data.productPrice), productImage: data.productImage))
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
-        cell.genericView.setButtonAction { [weak self] in
-            let vc = ProductDetailPageBuilder.build(productDetail: ProductDetailCardViewData(productInfoData: ProductInfoCardViewData(productName: data.productName, productDescription: data.productDescription, productPrice: data.productPrice), productImage: data.productImage))
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }
+        
         return cell
+    }
+}
+
+extension MainPageViewController: MainPageViewModelDelegate {
+    func bindBasketButtonData(totalAmount: Double?) {
+        buttonCard.setData(by: ShoppingCardButtonData(basketAmount: totalAmount))
     }
 }
 
