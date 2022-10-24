@@ -9,8 +9,9 @@ import UIKit
 
 class ProductDetailPageBuilder {
     class func build(productDetail: ProductDetailCardViewData) -> UIViewController {
-        let viewModel = ProductDetailPageViewModel(productDetail: productDetail)
+        let viewModel = ProductDetailPageViewModel(productDetailCardData: productDetail)
         let vc = ProductDetailPageViewController(viewModel: viewModel)
+        viewModel.delegate = vc
         return vc
     }
 }

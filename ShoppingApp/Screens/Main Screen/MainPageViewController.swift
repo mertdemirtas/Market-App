@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class MainPageViewController: BaseViewController<MainPageViewModel> {
-    
+        
     private lazy var buttonCard: ShoppingCardButton = {
         let temp = ShoppingCardButton()
         temp.setData(by: ShoppingCardButtonData(basketAmount: 20.0))
@@ -29,8 +29,8 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
         prepareNavigationBarItems()
         viewModel.getData()
         prepareTableView()
-        
     }
+    
     private func prepareNavigationBarItems() {
         let rightBarItem = UIBarButtonItem(customView: buttonCard)
         self.navigationItem.setRightBarButton(rightBarItem, animated: true)

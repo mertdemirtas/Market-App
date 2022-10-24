@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductInfoCardViewData {
+struct ProductInfoCardViewData: Codable {
     let productName: String?
     let productDescription: String?
     let productPrice: Double?

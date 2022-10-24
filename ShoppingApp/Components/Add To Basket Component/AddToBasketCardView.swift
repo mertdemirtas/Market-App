@@ -8,7 +8,14 @@
 import Foundation
 import UIKit
 
+protocol AddToBasketCardViewDelegate: AnyObject {
+    func countDidChanged(currentCount: Int)
+}
+
 class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
+    
+    weak var delegate: AddToBasketCardViewDelegate?
+    
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
         temp.distribution = .fillEqually
@@ -97,12 +104,27 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
     }
     
     override func setupViewConfigurations() {
-        removeFromBasketButton.setButtonAction {
+        removeFromBasketButton.setButtonAction { [weak self] in
+            guard let data = self?.returnData() else { return }
             
+            guard let productCount = data.productCount else { return }
+            
+            if(productCount >= 1) {
+                let updatedProductCount = productCount - 1
+                self?.setData(by: AddToBasketCardViewData(productCount: updatedProductCount, productPrice: data.productPrice))
+                self?.loadDataView()
+                self?.delegate?.countDidChanged(currentCount: updatedProductCount)
+            }
         }
         
-        addToBasketButton.setButtonAction {
+        addToBasketButton.setButtonAction { [weak self] in
+            guard let data = self?.returnData() else { return }
             
+            let updatedProductCount = (data.productCount ?? 0) + 1
+            
+            self?.setData(by: AddToBasketCardViewData(productCount: updatedProductCount, productPrice: data.productPrice))
+            self?.loadDataView()
+            self?.delegate?.countDidChanged(currentCount: updatedProductCount)
         }
     }
     
