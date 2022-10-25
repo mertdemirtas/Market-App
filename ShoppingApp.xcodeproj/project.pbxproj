@@ -73,6 +73,7 @@
 		40A0FADD2906F76A0064DB6C /* OrderFieldCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0FADC2906F76A0064DB6C /* OrderFieldCardView.swift */; };
 		40A0FADF2906F7780064DB6C /* OrderFieldCardViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0FADE2906F7780064DB6C /* OrderFieldCardViewData.swift */; };
 		40A0FAE12907542B0064DB6C /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0FAE02907542A0064DB6C /* ImageCacheManager.swift */; };
+		40A0FAE3290764570064DB6C /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A0FAE2290764560064DB6C /* MockData.json */; };
 		6E1341B4280605060092B126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1341B3280605060092B126 /* AppDelegate.swift */; };
 		6E1341BD280605070092B126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BC280605070092B126 /* Assets.xcassets */; };
 		6E1341C0280605070092B126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1341BE280605070092B126 /* LaunchScreen.storyboard */; };
@@ -164,6 +165,7 @@
 		40A0FADC2906F76A0064DB6C /* OrderFieldCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFieldCardView.swift; sourceTree = "<group>"; };
 		40A0FADE2906F7780064DB6C /* OrderFieldCardViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFieldCardViewData.swift; sourceTree = "<group>"; };
 		40A0FAE02907542A0064DB6C /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		40A0FAE2290764560064DB6C /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		6E1341B0280605060092B126 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1341B3280605060092B126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E1341BC280605070092B126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				6E1341CA280605070092B126 /* ShoppingAppTests.swift */,
+				40A0FAE2290764560064DB6C /* MockData.json */,
 			);
 			path = ShoppingAppTests;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A0FAE3290764570064DB6C /* MockData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

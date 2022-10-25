@@ -1,0 +1,122 @@
+[
+    {
+        "productName": "La Lorraine Tombul Ekmek",
+        "productDescription": "Doğal ham maddelerden üretilir.Koruyucu ve katkı maddesi içermez.İçindekiler: Un, su, maya, tuz",
+        "productPrice": 7.5,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5f36a28b29d3b131b9d95548_tr_1637858193743.jpeg"
+    },
+    {
+        "productName": "Backhaus Koko Kurabiyesi",
+        "productDescription": "İçinde gerçek hindistan cevizi vardır.Ürün ambalajı ile kuru bir ortamda saklanmalıdır.",
+        "productPrice": 14,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/60801eada9eb26c147b8e494_tr_1619794759098.jpeg"
+    },
+    {
+        "productName": "Eti Browni Intense Mini Çikolatalı Kek",
+        "productDescription": "Paket içerisinde 10 adet çikolatalı mini kek yer almaktadır.",
+        "productPrice": 14.85,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5f56456dd7f707468a738c96_tr_1601033990645.jpeg"
+    },
+    {
+        "productName": "Patiswiss Crunchy Karamel Bisküvi Kreması",
+        "productDescription": "Karamelize Bisküvi Kreması Crunchy, Patiswiss karamelize bisküvinin sürülebilir halidir.İçeriğindeki bisküvi parçacıkları ve krema kıvamındaki yapısıyla kahvaltılarda tüketilebilir.",
+        "productPrice": 27.5,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/60a3c535fb21a8150cedc89e_tr_1621705316751.jpeg"
+    },
+    {
+        "productName": "İçim %3 Yağlı Süt",
+        "productDescription": "Hiçbir katkı maddesi içermez.",
+        "productPrice": 12.95,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5ced482d4a8a2a000137da6d_tr_1623652387464.jpeg"
+    },
+    {
+        "productName": "Mandıradan Tam Yağlı Olgunlaştırılmış Trakya Eski Kaşar Peyniri",
+        "productDescription": "Şirden mayası kullanılarak pastörize keçi, koyun ve inek sütlerinden üretilmiştir.",
+        "productPrice": 56.75,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5e3c6800fdf97eeb3cacc09b_tr_1641556037148.jpeg"
+    },
+    {
+        "productName": "Cerroni Cheddar Peyniri",
+        "productDescription": "Turuncu rengini Achiote Ağacı tohumlarından elde edilen Annatto’dan alır.",
+        "productPrice": 53.45,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/60ab91be4dc3483b24e4913e_tr_1641558916798.jpeg"
+    },
+    {
+        "productName": "La Vache Qui Rit Krem Peynir",
+        "productDescription": "Kalsiyum, D vitamini ve Protein ile zengin bir içeriğe sahiptir. Kahvaltılık veya atıştırmalık olarak tüketilebilir.",
+        "productPrice": 28.55,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5d66630ce9f977000106ddb1_tr_1567435984787.jpeg"
+    },
+    {
+        "productName": "Activia Karıştır & Atıştır Tam Buğday Gevreği & Çilek",
+        "productDescription": "Sindirim sistemini düzenlemeye yardımcı olan kalsiyum ve protein kaynağıdır.",
+        "productPrice": 9.65,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/56b5c0592fc3d00f005faf19_tr_1586435004920.jpeg"
+    },
+    {
+        "productName": "Mandıradan Erzincan Tereyağı",
+        "productDescription": "%100 doğal pastörize süt kremasından üretilmiştir.",
+        "productPrice": 42.25,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5e3c5f48ca767aa5559a8ee2_tr_1641556515037.jpeg"
+    },
+    {
+        "productName": "Colgate Hassasiyete Pro-Çözüm Anında Rahatlama Diş Macunu",
+        "productDescription": "Pro Argin formülü, diş hekimlerinin hastalarının dişlerdeki hassasiyeti rahatlatmak için kullandıkları yeni bir teknolojiye sahiptir.",
+        "productPrice": 57.9,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5ce65820a72a950001cc884d_tr_1609902500441.jpeg"
+    },
+    {
+        "productName": "Colgate Plax Nane Ferahlığı Ağız Bakım Suyu",
+        "productDescription": "Daha uzun süreli ferah nefes sağlar. Çürüklere karşı florür içerir.",
+        "productPrice": 14.65,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/570b249667a71d0300cb8586_tr_1583127241308.jpeg"
+    },
+    {
+        "productName": "Domestos Yoğun Kıvamlı Çamaşır Suyu Dağ Esintisi",
+        "productDescription": "Yoğun kıvamlı formülüyle yüzeylere tutunarak uzun süre etki sağlar.",
+        "productPrice": 14.75,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5d7f8dd10ed2c200010d5152_b6135284-0ab2-4b07-a7ef-fa4f754902e1.jpeg"
+    },
+    {
+        "productName": "Domestos Yüzey Temizleyici Çam",
+        "productDescription": "Tüm zeminlerde kullanılabilir.",
+        "productPrice": 29.9,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/60ad26592af303bcbf206148_b64a8058-ef7e-43ec-9214-71130b5ba1a4.jpeg"
+    },
+    {
+        "productName": "Vileda Standart Temizlik Eldiveni",
+        "productDescription": "Görsellerdeki ürünlerden herhangi bir tanesi teslim edilecektir.",
+        "productPrice": 20.9,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/60098ab7ad89ed352fca7207_tr_1611247980060.jpeg"
+    },
+    {
+        "productName": "Palmolive Mutfak Koku Giderici Sıvı Sabun",
+        "productDescription": "Limon özü ile zenginleştirilmiş formülü ile mutfakta oluşan kötü kokulardan tamamen kurtulmanızı sağlar.",
+        "productPrice": 13.45,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5e6a0f71dd2c25262e6d33e7_tr_1604128913839.jpeg"
+    },
+    {
+        "productName": "Kuzeyden Su",
+        "productDescription": "Basketbol Milli Takımlar ve Voleybol Milli Takımlar Resmi Su Sponsoru Kuzeyden.",
+        "productPrice": 19.95,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5d6d25506deb8b00011f6027_tr_1616483020681.jpeg"
+    },
+    {
+        "productName": "Exotic Limonata",
+        "productDescription": "Taze limon suyu kullanılarak geleneksel yöntemler ile hazırlanmıştır.",
+        "productPrice": 21.7,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5ceae038c461e70001cc9808_tr_1609902805128.jpeg"
+    },
+    {
+        "productName": "Faladdin Türk Kahvesi Klasik",
+        "productDescription": "Paketten çıkan kod içinde Faladdin uygulamasında ücretsiz fal baktırabileceğiniz kredi hakkı yer almaktadır.",
+        "productPrice": 11.6,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5f71b1bcb496656e39ce0d42_tr_1609400728683.png"
+    },
+    {
+        "productName": "İthal Muz",
+        "productDescription": "600 gr",
+        "productPrice": 21.95,
+        "productImage": "https://github.com/android-getir/public-files/blob/main/images/5cac8d0b03c5fd0001497976_tr_1579677305629.jpeg"
+    }
+]

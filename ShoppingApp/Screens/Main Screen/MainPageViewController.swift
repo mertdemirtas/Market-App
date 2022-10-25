@@ -84,13 +84,12 @@ extension MainPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else { return UITableViewCell() }
-        let data = viewModel.getCellData(for: indexPath)
         
-        if let formattedData = MainPageDataFormatter.formatDataToProductTableViewCellData(data: data) {
+        if let formattedData = viewModel.getCellData(for: indexPath) {
             cell.setData(data: formattedData)
             
             cell.genericView.setButtonAction { [weak self] in
-                let vc = ProductDetailPageBuilder.build(productDetail: ProductDetailCardViewData(productInfoData: ProductInfoCardViewData(productName: data.productName, productDescription: data.productDescription, productPrice: data.productPrice), productImage: data.productImage))
+                let vc = ProductDetailPageBuilder.build(productDetail: ProductDetailCardViewData(productInfoData: formattedData.productInfoData, productImage: formattedData.productImage))
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }

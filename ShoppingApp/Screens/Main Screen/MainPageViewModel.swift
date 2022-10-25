@@ -13,8 +13,8 @@ protocol MainPageViewModelDelegate: AnyObject {
 }
 
 class MainPageViewModel: BaseViewModel {
-    let coreDataManager = GenericCoreDataManager.shared
-    let endpoint: MockDataEndpoint = MockDataEndpoint()
+    private let coreDataManager = GenericCoreDataManager.shared
+    private let endpoint: MockDataEndpoint = MockDataEndpoint()
     
     var bindDataClosure: (() -> Void)?
     weak var delegate: MainPageViewModelDelegate?
@@ -33,6 +33,11 @@ class MainPageViewModel: BaseViewModel {
         })
     }
     
+    public func setDataObject(data: MockDataModel?) {
+        guard let data = data else { return }
+        self.itemsArray.append(data)
+    }
+    
     private func bindData(data: [MockDataModel]?) {
         guard let data = data else { return }
         
@@ -40,22 +45,21 @@ class MainPageViewModel: BaseViewModel {
             if let productImage = element.productImage {
                 element.productImage = convertURL(url: productImage)
             }
-            self.itemsArray.append(element)
+            setDataObject(data: element)
         }
         
-      //  self.itemsArray = data
         bindDataClosure?()
     }
     
-    func getItemCount() -> Int {
+    public func getItemCount() -> Int {
         return itemsArray.count
     }
     
-    func getCellData(for indexPath: IndexPath) -> MockDataModel {
-        return itemsArray[indexPath.row]
+    public func getCellData(for indexPath: IndexPath) -> ProductTableViewCellData? {
+        return MainPageDataFormatter.formatDataToProductTableViewCellData(data: itemsArray[indexPath.row])
     }
     
-    func getBasketAmount() {
+    public func getBasketAmount() {
         totalAmount = 0
         let worker = EntityWorker(entityName: "Product", entityOperation: .getObjects)
         coreDataManager.manageEntity(with: worker, completion: { [weak self] (result: Result<CoreDataResult, CoreDataErrors>) in
@@ -73,7 +77,7 @@ class MainPageViewModel: BaseViewModel {
         })
     }
     
-    func convertURL(url: String?) -> String? {
+    private func convertURL(url: String?) -> String? {
         guard let url = url else { return nil }
         let strArr = url.components(separatedBy: "/")
         return ("https://raw.githubusercontent.com/android-getir/public-files/main/images/" + (strArr.last ?? ""))
