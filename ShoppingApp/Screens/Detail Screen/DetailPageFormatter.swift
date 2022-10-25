@@ -10,7 +10,7 @@ import Foundation
 class DetailPageFormatter {
     class func formatDataToProductCoreDataModel(data: ProductDetailData?) -> ProductCoreDataModel? {
         guard let data = data else { return nil}
-        return ProductCoreDataModel(productName: data.productDetailCardViewData?.productInfoData?.productName, productDescription: data.productDetailCardViewData?.productInfoData.debugDescription, productPrice: data.productDetailCardViewData?.productInfoData?.productPrice, productImage: data.productDetailCardViewData?.productImage, productCount: data.productCount)
+        return ProductCoreDataModel(productName: data.productDetailCardViewData?.productInfoData?.productName, productDescription: data.productDetailCardViewData?.productInfoData?.productDescription, productPrice: data.productDetailCardViewData?.productInfoData?.productPrice, productImage: data.productDetailCardViewData?.productImage, productCount: data.productCount)
     }
     
     class func formatDataToAddToBasketComponentData(data: ProductDetailData?) -> AddToBasketCardViewData? {

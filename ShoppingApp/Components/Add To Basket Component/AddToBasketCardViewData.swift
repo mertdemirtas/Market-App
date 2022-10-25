@@ -8,6 +8,6 @@
 import Foundation
 
 struct AddToBasketCardViewData: Codable {
-    let productCount: Int?
+    var productCount: Int?
     let productPrice: Double?
 }

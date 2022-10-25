@@ -12,6 +12,10 @@ class MainPageViewController: BaseViewController<MainPageViewModel> {
         
     private lazy var buttonCard: ShoppingCardButton = {
         let temp = ShoppingCardButton()
+        temp.setButtonAction { [weak self] in
+            let vc = BasketPageBuilder.build()
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
@@ -93,7 +97,6 @@ extension MainPageViewController: UITableViewDataSource {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
-        
         return cell
     }
 }

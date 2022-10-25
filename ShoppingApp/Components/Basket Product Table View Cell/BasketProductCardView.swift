@@ -13,19 +13,25 @@ class BasketProductCardView: GenericBaseView<BasketProductCardViewData> {
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
         temp.distribution = .fill
-        temp.spacing = 4.0
+        temp.spacing = 8.0
         temp.axis = .horizontal
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
-    private lazy var productTableViewCellCardView: ProductTableViewCellCardView = {
-        let temp = ProductTableViewCellCardView()
+    private lazy var productInfoCardView: ProductInfoCardView = {
+        let temp = ProductInfoCardView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
     
-    private lazy var addToBasketCardView: AddToBasketCardView = {
+    private lazy var basketView: BaseView = {
+        let temp = BaseView()
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        return temp
+    }()
+    
+    lazy var addToBasketCardView: AddToBasketCardView = {
         let temp = AddToBasketCardView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
@@ -34,20 +40,30 @@ class BasketProductCardView: GenericBaseView<BasketProductCardViewData> {
     override func addMajorViewComponents() {
         addSubview(containerStackView)
         
-        containerStackView.addArrangedSubview(productTableViewCellCardView)
-        containerStackView.addArrangedSubview(addToBasketCardView)
+        containerStackView.addArrangedSubview(productInfoCardView)
+        containerStackView.addArrangedSubview(basketView)
+        basketView.addSubview(addToBasketCardView)
         
         NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(equalTo: topAnchor),
             containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            
+            addToBasketCardView.centerYAnchor.constraint(equalTo: basketView.centerYAnchor),
+            addToBasketCardView.leadingAnchor.constraint(equalTo: basketView.leadingAnchor),
+            addToBasketCardView.trailingAnchor.constraint(equalTo: basketView.trailingAnchor),
+            
+            basketView.widthAnchor.constraint(equalToConstant: 70.0),
         ])
     }
     
     override func loadDataView() {
         guard let data = returnData() else { return }
-        productTableViewCellCardView.setData(by: data.productData)
+        if let productData = data.productInfoData {
+            productInfoCardView.setData(by: productData)
+        }
         addToBasketCardView.setData(by: data.addToBasketData)
     }
 }

@@ -16,9 +16,12 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
     
     weak var delegate: AddToBasketCardViewDelegate?
     
-    private lazy var containerStackView: UIStackView = {
+    private var removeButtonAction: (() -> Void) = { }
+    private var addButtonAction: (() -> Void) = { }
+    
+    lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
-        temp.distribution = .fillEqually
+        temp.distribution = .fillProportionally
         temp.axis = .vertical
         temp.spacing = 5.0
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +80,7 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
         let temp = BaseLabel()
         temp.textAlignment = .center
         temp.textColor = .systemIndigo
+        temp.contentMode = .bottom
         temp.font = .boldSystemFont(ofSize: 18)
         temp.layer.masksToBounds = true
         temp.layer.cornerRadius = 10.0
@@ -95,11 +99,10 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
         basketOperationStackView.addArrangedSubview(addToBasketButton)
         
         NSLayoutConstraint.activate([
-            containerStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            containerStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
-            containerStackView.widthAnchor.constraint(equalToConstant: 120.0),
-            containerStackView.heightAnchor.constraint(equalToConstant: 70.0)
+            containerStackView.topAnchor.constraint(equalTo: topAnchor),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -115,6 +118,7 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
                 self?.loadDataView()
                 self?.delegate?.countDidChanged(currentCount: updatedProductCount)
             }
+            self?.removeButtonAction()
         }
         
         addToBasketButton.setButtonAction { [weak self] in
@@ -125,6 +129,8 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
             self?.setData(by: AddToBasketCardViewData(productCount: updatedProductCount, productPrice: data.productPrice))
             self?.loadDataView()
             self?.delegate?.countDidChanged(currentCount: updatedProductCount)
+            self?.addButtonAction()
+
         }
     }
     
@@ -140,5 +146,13 @@ class AddToBasketCardView: GenericBaseView<AddToBasketCardViewData> {
         else {
             productCount.text = "0"
         }
+    }
+    
+    public func setAddButtonAction(action: @escaping () -> Void) {
+        addButtonAction = action
+    }
+    
+    public func setRemoveButtonAction(action: @escaping () -> Void) {
+        removeButtonAction = action
     }
 }

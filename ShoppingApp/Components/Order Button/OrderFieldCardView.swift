@@ -18,6 +18,7 @@ class OrderFieldCardView: GenericBaseView<OrderFieldCardViewData> {
     private lazy var containerStackView: UIStackView = {
         let temp = UIStackView()
         temp.axis = .horizontal
+        temp.spacing = 16.0
         temp.distribution = .fill
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
@@ -25,11 +26,17 @@ class OrderFieldCardView: GenericBaseView<OrderFieldCardViewData> {
     
     private lazy var orderButton: BaseButton<GenericDataProtocol> = {
         let temp = BaseButton<GenericDataProtocol>()
-        
+        temp.backgroundColor = .systemIndigo
+        temp.buttonLabel.text = "Order"
+        temp.buttonLabel.font = .boldSystemFont(ofSize: 21)
+        temp.buttonLabel.textAlignment = .center
+        temp.buttonLabel.textColor = .white
+        temp.addViewOnCenter(view: temp.buttonLabel)
+        temp.layer.masksToBounds = true
+        temp.layer.cornerRadius = 10.0
         temp.setButtonAction { [weak self] in
             self?.delegate?.orderButtonTapped()
         }
-        
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()
@@ -38,7 +45,7 @@ class OrderFieldCardView: GenericBaseView<OrderFieldCardViewData> {
         let temp = BaseLabel()
         temp.textAlignment = .center
         temp.textColor = .black
-        temp.font = .systemFont(ofSize: 17)
+        temp.font = .boldSystemFont(ofSize: 17)
         temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
     }()

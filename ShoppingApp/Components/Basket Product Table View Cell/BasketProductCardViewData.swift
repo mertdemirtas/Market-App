@@ -8,6 +8,6 @@
 import Foundation
 
 struct BasketProductCardViewData: Codable {
-    let productData: ProductTableViewCellData?
-    let addToBasketData: AddToBasketCardViewData?
+    let productInfoData: ProductInfoCardViewData?
+    var addToBasketData: AddToBasketCardViewData?
 }

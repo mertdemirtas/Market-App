@@ -67,8 +67,13 @@ class ProductInfoCardView: GenericBaseView<ProductInfoCardViewData> {
     
     override func loadDataView() {
         guard let data = returnData() else { return }
-        productName.text = data.productName
-        productDescription.text = data.productDescription
+        if let productName = data.productName {
+            self.productName.text = productName
+        }
+        
+        if let productDescription = data.productDescription {
+            self.productDescription.text = productDescription
+        }
         
         if let productPriceString = data.productPrice {
             productPrice.text = "₺"

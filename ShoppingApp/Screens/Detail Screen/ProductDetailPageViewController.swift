@@ -10,17 +10,7 @@ import UIKit
 import CoreData
 
 class ProductDetailPageViewController: BaseViewController<ProductDetailPageViewModel> {
-    
-    let coreDataManager = GenericCoreDataManager.shared
-    
-    private lazy var containerStackView: UIStackView = {
-        let temp = UIStackView()
-        temp.axis = .vertical
-        temp.distribution = .fill
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        return temp
-    }()
-    
+    // MARK: UIComponents
     private lazy var productDetailCardView: ProductDetailCardView = {
         let temp = ProductDetailCardView()
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +25,7 @@ class ProductDetailPageViewController: BaseViewController<ProductDetailPageViewM
         return temp
     }()
     
+    // MARK: Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -42,25 +33,25 @@ class ProductDetailPageViewController: BaseViewController<ProductDetailPageViewM
     }
     
     override func addViewComponents() {
-        view.addSubview(containerStackView)
+        view.addSubview(productDetailCardView)
         
-        containerStackView.addArrangedSubview(productDetailCardView)
         view.addSubview(addToBasketCardView)
         
         NSLayoutConstraint.activate([
-            containerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            containerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerStackView.bottomAnchor.constraint(lessThanOrEqualTo: addToBasketCardView.topAnchor),
+            productDetailCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            productDetailCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            productDetailCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            productDetailCardView.bottomAnchor.constraint(lessThanOrEqualTo: addToBasketCardView.topAnchor),
             
-            addToBasketCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            addToBasketCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            addToBasketCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
+            addToBasketCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
             addToBasketCardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            addToBasketCardView.heightAnchor.constraint(equalToConstant: 100.0)
+            addToBasketCardView.heightAnchor.constraint(equalToConstant: 80.0),
         ])
     }
 }
 
+// MARK: Extensions
 extension ProductDetailPageViewController: ProductDetailPageViewModelDelegate {
     func bindData(productDetailData: ProductDetailData?) {
         productDetailCardView.setData(by: productDetailData?.productDetailCardViewData)

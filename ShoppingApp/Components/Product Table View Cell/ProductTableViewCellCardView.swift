@@ -57,8 +57,9 @@ class ProductTableViewCellCardView: GenericBaseView<ProductTableViewCellData> {
     
     override func loadDataView() {
         guard let data = returnData() else { return }
-        productInfoCardView.setData(by: ProductInfoCardViewData(productName: data.productInfoData?.productName, productDescription: data.productInfoData?.productDescription, productPrice: data.productInfoData?.productPrice))
-
+        if let infoData = data.productInfoData {
+            productInfoCardView.setData(by: infoData)
+        }
         productImage.setImage(componentType: ImageViewComponentEnum.fromURL(url: data.productImage))
     }
 }
