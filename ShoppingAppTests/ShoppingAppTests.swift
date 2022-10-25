@@ -17,27 +17,8 @@ class ShoppingAppTests: XCTestCase {
     override func setUpWithError() throws {
         viewModel = MainPageViewModel()
         
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.dateDecodingStrategy = .deferredToDate
-        jsonDecoder.keyDecodingStrategy = .useDefaultKeys
-        
-        do {
-            if let filePath = Bundle(for: type(of: self)).path(forResource: "MockData", ofType: "json") {
-                let fileUrl = URL(fileURLWithPath: filePath)
-                let data = try Data(contentsOf: fileUrl)
-                
-                do {
-                    self.data = try jsonDecoder.decode([MockDataModel].self, from: data)
-                    self.data.forEach({
-                        viewModel?.setDataObject(data: $0)
-                    })
-                }
-                catch let error {
-                    print(error)
-                }
-            }
-        } catch {
-            print("error: \(error)")
+        if let decodedData = decodeJson(fileName: "MockData") {
+            data = decodedData
         }
     }
     
@@ -59,4 +40,35 @@ class ShoppingAppTests: XCTestCase {
         // then
         XCTAssertEqual(productName, data.first?.productName)
     }
+    
+    func decodeJson(fileName: String?) -> [MockDataModel]? {
+        var tempData: [MockDataModel] = []
+        
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .deferredToDate
+        jsonDecoder.keyDecodingStrategy = .useDefaultKeys
+        
+        do {
+            if let filePath = Bundle(for: type(of: self)).path(forResource: fileName, ofType: "json") {
+                let fileUrl = URL(fileURLWithPath: filePath)
+                let data = try Data(contentsOf: fileUrl)
+                
+                do {
+                    tempData = try jsonDecoder.decode([MockDataModel].self, from: data)
+                    tempData.forEach({
+                        viewModel?.setDataObject(data: $0)
+                    })
+                    return tempData
+                }
+                catch let error {
+                    print(error)
+                }
+            }
+        } catch {
+            print("error: \(error)")
+        }
+        return nil
+    }
 }
+
+    
