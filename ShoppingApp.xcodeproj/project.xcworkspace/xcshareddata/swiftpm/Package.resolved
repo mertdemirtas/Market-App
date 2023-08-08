@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "networklayerpackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mertdemirtas/NetworkLayerPackage.git",
+      "state" : {
+        "branch" : "test",
+        "revision" : "e02f9f556f60643efac5fccf8f91dd0ca7aca047"
+      }
+    }
+  ],
+  "version" : 2
+}

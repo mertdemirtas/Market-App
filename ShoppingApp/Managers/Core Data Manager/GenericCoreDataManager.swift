@@ -122,7 +122,7 @@ class GenericCoreDataManager {
     
     // Updating Object
     private func updateEntityObject<T: Equatable>(with entityManager: EntityWorker, uniqueElementKey: String, uniqueElementValue: T, completion: @escaping (Result<CoreDataResult, CoreDataErrors>) -> Void) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityManager.entityName)
+        let request = NSFetchRequest<NSManagedObjectContext>(entityName: entityManager.entityName)
         
         do {
             guard let results = try managedContext?.fetch(request) as? [NSManagedObject] else { return }
